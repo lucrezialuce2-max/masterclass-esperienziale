@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Masterclass Sonno Lanerossi</title>
     
-    <link rel="icon" type="image/png" href="image_a2e013.png">
+    <link rel="icon" type="image/png" href="favicon.png">
     
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -150,9 +150,14 @@
                 
                 <div class="text-center mb-10">
                     <p class="eyebrow mb-3 text-gray-500">SLEEP IS A SENSE</p>
-                    <h1 class="text-4xl md:text-5xl leading-tight mb-2 text-black">
+                    <h1 class="text-4xl md:text-5xl leading-tight mb-1 text-black">
                         Wool<br><span class="italic font-light">Energy</span>
                     </h1>
+                    
+                    <p class="text-lg text-black font-light uppercase tracking-widest mt-1 opacity-70">
+                        THE EXPERIENCE
+                    </p>
+                    
                     <div class="w-12 h-[1px] bg-black mx-auto mt-6 mb-6"></div>
                     <p class="text-lg text-gray-600 font-light italic leading-relaxed">
                         "Quattro elementi. Cinque sensi.<br>Un unico ecosistema per il tuo sonno."
@@ -317,7 +322,6 @@
             if (viewName === 'booking') {
                 flyer.classList.add('hidden');
                 booking.classList.remove('hidden');
-                // Piccola animazione di ingresso
                 const inputs = booking.querySelectorAll('input, select, button');
                 inputs.forEach((el, index) => {
                     el.style.opacity = '0';
