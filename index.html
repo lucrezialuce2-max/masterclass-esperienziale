@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Masterclass Sonno Lanerossi</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Google Fonts -->
+    <!-- Playfair Display per i titoli eleganti, Montserrat per il corpo testo pulito/tecnico -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* CONFIGURAZIONE GENERALE */
+        :root {
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Montserrat', sans-serif;
+            --color-black: #111111;
+            --color-gray-dark: #333333;
+            --color-gray-light: #F5F5F5;
+            --color-border: #E5E5E5;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: #FFFFFF; /* Sfondo pagina bianco */
+            color: var(--color-black);
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, .serif-font {
+            font-family: var(--font-heading);
+        }
+
+        /* CARD PRINCIPALE */
+        /* Rendiamo la card meno "chiusa" e più parte della pagina, ma manteniamo i limiti per mobile */
+        .app-container {
+            background-color: #FFFFFF;
+            /* Ombra molto sottile ed elegante, quasi impercettibile */
+            box-shadow: 0 10px 40px -10px rgba(0,0,0,0.05);
+        }
+
+        /* TYPOGRAPHY UTILITIES */
+        .eyebrow {
+            font-family: var(--font-body);
+            text-transform: uppercase;
+            letter-spacing: 0.15em;
+            font-size: 0.7rem;
+            font-weight: 600;
+            color: #666;
+        }
+
+        /* BUTTONS */
+        .btn-black {
+            background-color: var(--color-black);
+            color: white;
+            transition: all 0.3s ease;
+            font-family: var(--font-body);
+            font-weight: 500;
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            border: 1px solid var(--color-black);
+        }
+
+        .btn-black:hover {
+            background-color: white;
+            color: var(--color-black);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--color-black);
+            border: 1px solid var(--color-border);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-outline:hover {
+            border-color: var(--color-black);
+        }
+
+        /* FORM ELEMENTS */
+        .form-input {
+            background-color: #FFFFFF;
+            border-bottom: 1px solid #CCCCCC;
+            border-top: 0;
+            border-left: 0;
+            border-right: 0;
+            border-radius: 0;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-input:focus {
+            border-color: var(--color-black);
+            outline: none;
+            box-shadow: none;
+        }
+
+        .form-select {
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%23111111' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3e%3c/svg%3e");
+            background-position: right 0.5rem center;
+            background-repeat: no-repeat;
+            background-size: 1.5em 1.5em;
+        }
+
+        /* ANIMAZIONI */
+        .fade-in {
+            animation: fadeIn 0.6s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* UTILITY PER IMMAGINI */
+        .img-overlay-gradient {
+            background: linear-gradient(to top, rgba(0,0,0,0.4) 0%, transparent 100%);
+        }
+    </style>
+</head>
+<body class="bg-[#FAFAFA] min-h-screen flex items-center justify-center p-0 md:p-8">
+
+    <!-- Container Principale -->
+    <div id="app-container" class="app-container w-full max-w-[500px] min-h-[800px] md:rounded-xl overflow-hidden relative flex flex-col">
+        
+        <!-- HEADER COMUNE (Logo nel box bianco) -->
+        <div class="absolute top-0 left-0 right-0 z-20 flex justify-center pt-6 pointer-events-none">
+            <!-- Box Bianco con Logo -->
+            <div class="bg-white px-8 py-3 rounded-lg shadow-md pointer-events-auto flex items-center justify-center">
+                <!-- Logo Lanerossi Immagine -->
+                <img src="image_a2e013.png" alt="LANEROSSI" class="h-8 object-contain" />
+            </div>
+        </div>
+
+        <!-- VISTA VOLANTINO (FLYER) -->
+        <div id="view-flyer" class="fade-in flex-grow flex flex-col bg-white">
+            
+            <!-- Hero Image Section -->
+            <div class="relative h-[45vh] w-full bg-gray-100 overflow-hidden">
+                <!-- IMMAGINE INTESTAZIONE AGGIORNATA -->
+                <img 
+                    src="image_a17f73.jpg" 
+                    alt="Sleep System Atmosphere" 
+                    class="w-full h-full object-cover grayscale-[20%] contrast-[1.05]"
+                    onerror="this.src='https://images.unsplash.com/photo-1541781777621-dd132925b371?q=80&w=2070&auto=format&fit=crop'; this.classList.add('grayscale')" 
+                />
+                <!-- Sfumatura bianca leggera in basso -->
+                <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent"></div>
+            </div>
+
+            <!-- Content Body -->
+            <div class="px-8 pb-10 -mt-10 relative z-10 flex flex-col flex-grow">
+                
+                <!-- Titolo Centrale -->
+                <div class="text-center mb-10">
+                    <!-- NOME CAMPAGNA -->
+                    <p class="eyebrow mb-3 text-gray-500">SLEEP IS A SENSE</p>
+                    <h1 class="text-4xl md:text-5xl leading-tight mb-2 text-black">
+                        Wool<br><span class="italic font-light">Energy</span>
+                    </h1>
+                    <div class="w-12 h-[1px] bg-black mx-auto mt-6 mb-6"></div>
+                    <!-- SLOGAN -->
+                    <p class="text-lg text-gray-600 font-light italic leading-relaxed">
+                        "Quattro elementi. Cinque sensi.<br>Un unico ecosistema per il tuo sonno."
+                    </p>
+                </div>
+
+                <!-- Info Blocks -->
+                <div class="space-y-8 mb-10">
+                    
+                    <!-- Blocco 1: Il Sonno Rigenerativo -->
+                    <div>
+                        <!-- RIMOSSO HEADER "STEP 01" QUI -->
+                        <h4 class="serif-font text-2xl mb-3 text-black">Il Sonno Rigenerativo</h4>
+                        <div class="space-y-3">
+                            <p class="text-sm text-gray-600 leading-relaxed font-light">
+                                Il sonno è la nuova frontiera del benessere. In un mondo che accelera, dormire bene è un lusso rigenerativo che merita scienza e natura.
+                            </p>
+                            <p class="text-sm text-gray-600 leading-relaxed font-light">
+                                Wool Energy nasce da questa visione: un ecosistema per il sonno che unisce la forza della lana Merino e l'innovazione scientifica per un riposo profondo e misurabile.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Blocco 2: Experience Area -->
+                    <div class="border-t border-gray-100 pt-6">
+                        <div class="flex justify-between items-center mb-3">
+                            <h3 class="text-xs font-bold tracking-widest uppercase text-gray-400">Experience Area</h3>
+                            <i data-lucide="star" class="w-4 h-4 text-black opacity-40"></i>
+                        </div>
+                        <p class="text-sm text-gray-600 leading-relaxed font-light">
+                            Durante l'evento avrai l'opportunità esclusiva di <strong>provare dal vivo</strong> i prodotti Lanerossi e testare la qualità Wool Energy.
+                        </p>
+                    </div>
+
+                    <!-- Blocco 3: Perché Partecipare (Lista con Icone) -->
+                    <div class="border-t border-gray-100 pt-6">
+                         <h4 class="serif-font text-xl mb-5 text-black">Perché Partecipare</h4>
+                         <ul class="space-y-5">
+                             <li class="flex items-start">
+                                 <i data-lucide="moon" class="w-5 h-5 mr-3 text-gray-400 flex-shrink-0 mt-0.5 stroke-[1.5]"></i>
+                                 <span class="text-sm text-gray-600 font-light leading-relaxed">
+                                     Il sonno come rituale di benessere profondo e rigenerativo.
+                                 </span>
+                             </li>
+                             <li class="flex items-start">
+                                 <i data-lucide="atom" class="w-5 h-5 mr-3 text-gray-400 flex-shrink-0 mt-0.5 stroke-[1.5]"></i>
+                                 <span class="text-sm text-gray-600 font-light leading-relaxed">
+                                     Wool Energy: l'ecosistema scientifico per il sonno di Lanerossi.
+                                 </span>
+                             </li>
+                             <li class="flex items-start">
+                                 <i data-lucide="thermometer" class="w-5 h-5 mr-3 text-gray-400 flex-shrink-0 mt-0.5 stroke-[1.5]"></i>
+                                 <span class="text-sm text-gray-600 font-light leading-relaxed">
+                                     Comfort termico e assorbimento dell'umidità grazie alla lana Merino.
+                                 </span>
+                             </li>
+                             <li class="flex items-start">
+                                 <i data-lucide="layers" class="w-5 h-5 mr-3 text-gray-400 flex-shrink-0 mt-0.5 stroke-[1.5]"></i>
+                                 <span class="text-sm text-gray-600 font-light leading-relaxed">
+                                     Sostegno ergonomico e rilassamento profondo con memory e grafite.
+                                 </span>
+                             </li>
+                             <li class="flex items-start">
+                                 <i data-lucide="activity" class="w-5 h-5 mr-3 text-gray-400 flex-shrink-0 mt-0.5 stroke-[1.5]"></i>
+                                 <span class="text-sm text-gray-600 font-light leading-relaxed">
+                                     Stabilizzazione del ritmo cardiaco per un riposo continuo.
+                                 </span>
+                             </li>
+                         </ul>
+                    </div>
+                </div>
+
+                <!-- Footer Action -->
+                <div class="mt-auto pt-8 border-t border-gray-100 flex flex-col items-center space-y-4">
+                    <div class="text-center">
+                        <span class="block text-xs uppercase tracking-widest text-gray-400 mb-1">Quota di partecipazione</span>
+                        <span class="serif-font text-3xl">€25.00</span>
+                    </div>
+                    
+                    <button onclick="switchView('booking')" class="btn-black w-full py-4 px-6 flex justify-center items-center group">
+                        <span>Prenota il tuo posto</span>
+                        <i data-lucide="arrow-right" class="w-4 h-4 ml-2 transition-transform group-hover:translate-x-1"></i>
+                    </button>
+                    
+                    <p class="text-[10px] text-gray-400 uppercase tracking-wider text-center">
+                        Posti limitati • Include sessione Q&A
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <!-- VISTA PRENOTAZIONE (BOOKING) -->
+        <div id="view-booking" class="hidden fade-in flex-grow flex flex-col bg-white h-full relative">
+            
+            <!-- Navigation Header -->
+            <div class="pt-24 px-8 pb-6 text-center">
+                <!-- Freccia Back nera e cliccabile -->
+                <button onclick="switchView('flyer')" class="absolute top-8 left-6 p-2 text-black hover:bg-gray-100 rounded-full transition-colors z-50 cursor-pointer">
+                    <i data-lucide="arrow-left" class="w-6 h-6"></i>
+                </button>
+                
+                <p class="eyebrow mb-2">Iscrizione</p>
+                <h2 class="text-3xl serif-font mb-4">Completa il percorso</h2>
+                <p class="text-sm text-gray-500 font-light max-w-xs mx-auto">
+                    Inserisci i tuoi dati per accedere all'esperienza Wool Energy.
+                </p>
+            </div>
+
+            <!-- Form -->
+            <div class="flex-grow px-10 pb-10">
+                <form onsubmit="handleBooking(event)" class="space-y-8 mt-4">
+                    
+                    <div class="group">
+                        <label class="block text-xs uppercase tracking-widest text-black mb-2 transition-colors">Nome Completo</label>
+                        <input type="text" placeholder="Nome Cognome" class="form-input w-full pb-2 text-lg font-light placeholder-gray-300" required />
+                    </div>
+
+                    <div class="group">
+                        <label class="block text-xs uppercase tracking-widest text-black mb-2 transition-colors">Email</label>
+                        <input type="email" placeholder="nome@email.com" class="form-input w-full pb-2 text-lg font-light placeholder-gray-300" required />
+                    </div>
+
+                    <div class="group">
+                        <label class="block text-xs uppercase tracking-widest text-black mb-2 transition-colors">Seleziona Data</label>
+                        <div class="relative">
+                            <select id="date-select" class="form-input w-full pb-2 text-lg font-light appearance-none bg-transparent cursor-pointer" required>
+                                <option value="" disabled selected class="text-gray-300">Scegli una data disponibile...</option>
+                                <option value="9 Maggio, Vicenza">9 Maggio — Vicenza</option>
+                                <option value="6 Giugno, Roma">6 Giugno — Roma</option>
+                                <option value="11 Luglio, Milano">11 Luglio — Milano</option>
+                                <option value="29 Agosto, Francoforte">29 Agosto — Francoforte</option>
+                            </select>
+                            <i data-lucide="chevron-down" class="absolute right-0 bottom-3 w-4 h-4 text-gray-400 pointer-events-none"></i>
+                        </div>
+                    </div>
+
+                    <!-- Summary Box -->
+                    <div class="bg-gray-50 p-6 mt-8 flex justify-between items-center border border-gray-100">
+                        <div>
+                            <span class="block text-xs uppercase tracking-widest text-gray-400">Totale</span>
+                            <span class="serif-font text-2xl">€25.00</span>
+                        </div>
+                        <div class="h-8 w-[1px] bg-gray-200 mx-4"></div>
+                        <div class="text-right">
+                            <span class="block text-xs uppercase tracking-widest text-gray-400">Disponibilità</span>
+                            <span class="text-sm font-medium">30 Posti</span>
+                        </div>
+                    </div>
+
+                    <div class="pt-4">
+                        <button type="submit" class="btn-black w-full py-4 flex justify-center items-center group">
+                            <span>Conferma e Paga</span>
+                        </button>
+                        <div class="flex justify-center items-center mt-4 space-x-2 opacity-50">
+                            <i data-lucide="lock" class="w-3 h-3"></i>
+                            <span class="text-[10px] uppercase tracking-wider">Secure Payment by Stripe</span>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Logica -->
+    <script>
+        lucide.createIcons();
+
+        function switchView(viewName) {
+            const flyer = document.getElementById('view-flyer');
+            const booking = document.getElementById('view-booking');
+            
+            document.getElementById('app-container').scrollTo({ top: 0, behavior: 'smooth' });
+
+            if (viewName === 'booking') {
+                flyer.classList.add('hidden');
+                booking.classList.remove('hidden');
+                // Piccola animazione di ingresso
+                const inputs = booking.querySelectorAll('input, select, button');
+                inputs.forEach((el, index) => {
+                    el.style.opacity = '0';
+                    el.style.transform = 'translateY(10px)';
+                    setTimeout(() => {
+                        el.style.transition = 'all 0.5s ease';
+                        el.style.opacity = '1';
+                        el.style.transform = 'translateY(0)';
+                    }, 100 + (index * 50));
+                });
+            } else {
+                booking.classList.add('hidden');
+                flyer.classList.remove('hidden');
+            }
+        }
+
+        function handleBooking(e) {
+            e.preventDefault();
+            const date = document.getElementById('date-select').value;
+            const btn = e.target.querySelector('button[type="submit"]');
+            const originalText = btn.innerHTML;
+            
+            btn.innerHTML = '<span class="animate-pulse">Elaborazione...</span>';
+            
+            setTimeout(() => {
+                btn.classList.remove('btn-black');
+                btn.classList.add('bg-gray-900', 'text-white');
+                btn.innerHTML = '<div class="flex items-center"><i data-lucide="check" class="w-5 h-5 mr-2"></i> Iscritto</div>';
+                lucide.createIcons();
+                
+                setTimeout(() => {
+                    alert(`Grazie! La tua iscrizione per ${date} è confermata.\nRiceverai una mail con i dettagli.`);
+                    btn.innerHTML = originalText;
+                    btn.classList.add('btn-black');
+                    e.target.reset();
+                    switchView('flyer');
+                }, 1000);
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
