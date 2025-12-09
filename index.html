@@ -5,14 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Masterclass Sonno Lanerossi</title>
     
-    <!-- Tailwind CSS -->
+    <link rel="icon" type="image/png" href="image_a2e013.png">
+    
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- Google Fonts -->
-    <!-- Playfair Display per i titoli eleganti, Montserrat per il corpo testo pulito/tecnico -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
@@ -128,57 +126,42 @@
 </head>
 <body class="bg-[#FAFAFA] min-h-screen flex items-center justify-center p-0 md:p-8">
 
-    <!-- Container Principale -->
     <div id="app-container" class="app-container w-full max-w-[500px] min-h-[800px] md:rounded-xl overflow-hidden relative flex flex-col">
         
-        <!-- HEADER COMUNE (Logo nel box bianco) -->
         <div class="absolute top-0 left-0 right-0 z-20 flex justify-center pt-6 pointer-events-none">
-            <!-- Box Bianco con Logo -->
             <div class="bg-white px-8 py-3 rounded-lg shadow-md pointer-events-auto flex items-center justify-center">
-                <!-- Logo Lanerossi Immagine -->
                 <img src="image_a2e013.png" alt="LANEROSSI" class="h-8 object-contain" />
             </div>
         </div>
 
-        <!-- VISTA VOLANTINO (FLYER) -->
         <div id="view-flyer" class="fade-in flex-grow flex flex-col bg-white">
             
-            <!-- Hero Image Section -->
             <div class="relative h-[45vh] w-full bg-gray-100 overflow-hidden">
-                <!-- IMMAGINE INTESTAZIONE AGGIORNATA -->
                 <img 
                     src="image_a17f73.jpg" 
                     alt="Sleep System Atmosphere" 
                     class="w-full h-full object-cover grayscale-[20%] contrast-[1.05]"
                     onerror="this.src='https://images.unsplash.com/photo-1541781777621-dd132925b371?q=80&w=2070&auto=format&fit=crop'; this.classList.add('grayscale')" 
                 />
-                <!-- Sfumatura bianca leggera in basso -->
                 <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent"></div>
             </div>
 
-            <!-- Content Body -->
             <div class="px-8 pb-10 -mt-10 relative z-10 flex flex-col flex-grow">
                 
-                <!-- Titolo Centrale -->
                 <div class="text-center mb-10">
-                    <!-- NOME CAMPAGNA -->
                     <p class="eyebrow mb-3 text-gray-500">SLEEP IS A SENSE</p>
                     <h1 class="text-4xl md:text-5xl leading-tight mb-2 text-black">
                         Wool<br><span class="italic font-light">Energy</span>
                     </h1>
                     <div class="w-12 h-[1px] bg-black mx-auto mt-6 mb-6"></div>
-                    <!-- SLOGAN -->
                     <p class="text-lg text-gray-600 font-light italic leading-relaxed">
                         "Quattro elementi. Cinque sensi.<br>Un unico ecosistema per il tuo sonno."
                     </p>
                 </div>
 
-                <!-- Info Blocks -->
                 <div class="space-y-8 mb-10">
                     
-                    <!-- Blocco 1: Il Sonno Rigenerativo -->
                     <div>
-                        <!-- RIMOSSO HEADER "STEP 01" QUI -->
                         <h4 class="serif-font text-2xl mb-3 text-black">Il Sonno Rigenerativo</h4>
                         <div class="space-y-3">
                             <p class="text-sm text-gray-600 leading-relaxed font-light">
@@ -190,7 +173,6 @@
                         </div>
                     </div>
 
-                    <!-- Blocco 2: Experience Area -->
                     <div class="border-t border-gray-100 pt-6">
                         <div class="flex justify-between items-center mb-3">
                             <h3 class="text-xs font-bold tracking-widest uppercase text-gray-400">Experience Area</h3>
@@ -201,7 +183,6 @@
                         </p>
                     </div>
 
-                    <!-- Blocco 3: Perché Partecipare (Lista con Icone) -->
                     <div class="border-t border-gray-100 pt-6">
                          <h4 class="serif-font text-xl mb-5 text-black">Perché Partecipare</h4>
                          <ul class="space-y-5">
@@ -239,7 +220,6 @@
                     </div>
                 </div>
 
-                <!-- Footer Action -->
                 <div class="mt-auto pt-8 border-t border-gray-100 flex flex-col items-center space-y-4">
                     <div class="text-center">
                         <span class="block text-xs uppercase tracking-widest text-gray-400 mb-1">Quota di partecipazione</span>
@@ -258,12 +238,9 @@
             </div>
         </div>
 
-        <!-- VISTA PRENOTAZIONE (BOOKING) -->
         <div id="view-booking" class="hidden fade-in flex-grow flex flex-col bg-white h-full relative">
             
-            <!-- Navigation Header -->
             <div class="pt-24 px-8 pb-6 text-center">
-                <!-- Freccia Back nera e cliccabile -->
                 <button onclick="switchView('flyer')" class="absolute top-8 left-6 p-2 text-black hover:bg-gray-100 rounded-full transition-colors z-50 cursor-pointer">
                     <i data-lucide="arrow-left" class="w-6 h-6"></i>
                 </button>
@@ -275,7 +252,6 @@
                 </p>
             </div>
 
-            <!-- Form -->
             <div class="flex-grow px-10 pb-10">
                 <form onsubmit="handleBooking(event)" class="space-y-8 mt-4">
                     
@@ -303,7 +279,6 @@
                         </div>
                     </div>
 
-                    <!-- Summary Box -->
                     <div class="bg-gray-50 p-6 mt-8 flex justify-between items-center border border-gray-100">
                         <div>
                             <span class="block text-xs uppercase tracking-widest text-gray-400">Totale</span>
@@ -330,7 +305,6 @@
         </div>
     </div>
 
-    <!-- Script Logica -->
     <script>
         lucide.createIcons();
 
